@@ -1,0 +1,74 @@
+Variable:
+{
+	"id": "book-4"
+}
+
+query bookDetails($id: ID) {
+    bookById(id: $id) {
+        id
+        name
+        pageCount
+        author {
+            id
+            firstName
+            lastName
+        }
+    }
+}
+-------------------------------
+query allBooks {
+    allBooks {
+        id
+        name
+        pageCount
+        author {
+            id
+            firstName
+            lastName
+        }
+    }
+}
+-------------------------------
+Variable:
+{
+	"id": "author-2"
+}
+
+query authorDetails($id: ID) {
+    authorById(id: $id) {
+        id
+        firstName
+        lastName
+    }
+}
+
+query allAuthors {
+	allAuthors {
+		id
+		firstName
+		lastName
+	}
+}
+-------------------------------
+Variable:
+{
+  "book": {
+    "id": "book-4",
+    "name": "a new book",
+    "pageCount": 500,
+    "authorId": "author-1"
+  }
+}
+
+mutation addBook($book: AddBookInput!) {
+	addBook(book: $book) {
+        id
+        name
+        pageCount
+        author {
+            id
+            firstName
+            lastName
+        }	
+	}
+}
